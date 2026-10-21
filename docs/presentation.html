@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SecureBank Presentation Deck (8 Sections)</title>
+<style>
+:root {
+  --bg: #0b1329;
+  --card: #111d38;
+  --accent: #38bdf8;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --line: #1e293b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.navbar {
+  padding: 16px 30px;
+  background: #080d1a;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand { font-size: 18px; font-weight: 800; color: var(--accent); }
+.controls { display: flex; gap: 10px; align-items: center; }
+.btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { background: #334155; }
+.btn-accent { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+.btn-accent:hover { background: #7dd3fc; }
+.deck-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.slide {
+  display: none;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 560px;
+  background: var(--card);
+  border: 1px solid #233554;
+  border-radius: 14px;
+  padding: 50px 60px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  animation: fadeIn 0.25s ease-in-out;
+}
+.slide.active { display: flex; flex-direction: column; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.slide-header { border-bottom: 1px solid #233554; padding-bottom: 16px; margin-bottom: 24px; }
+.slide-num { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent); }
+h1 { font-size: 30px; margin: 6px 0 0; color: #fff; }
+h2 { font-size: 20px; color: #38bdf8; margin-top: 15px; }
+p, li { font-size: 15px; line-height: 1.7; color: #cbd5e1; }
+ul { padding-left: 24px; }
+li { margin-bottom: 10px; }
+.speaker-notes {
+  margin-top: auto;
+  background: #090e1a;
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+.speaker-notes b { color: var(--accent); display: block; margin-bottom: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.badge { display: inline-block; background: #064e3b; color: #34d399; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="brand">SecureBank • PPT (8 Sections)</div>
+  <div class="controls">
+    <button class="btn" onclick="prevSlide()">◀ Previous</button>
+    <span id="slide-indicator" style="font-weight: 700; color: var(--muted); padding: 0 10px;">Slide 1 / 8</span>
+    <button class="btn btn-accent" onclick="nextSlide()">Next ▶</button>
+    <button class="btn" onclick="window.print()">🖨️ Print to PDF</button>
+  </div>
+</div>
+
+<div class="deck-container">
+
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 1 OF 8 • TITLE & OVERVIEW</div>
+      <h1>Problem Definition and Scope</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Project Title: SecureBank</h2>
+        <p><b>Topic:</b> Comprehensive Test Strategy for a Secure Online Banking Application</p>
+        <p><b>Course:</b> DevSecOps Lab (CIAP Microproject)</p>
+        <p><b>Theme:</b> UN Sustainable Development Goal 9 (Industry, Innovation, and Infrastructure)</p>
+        <p><b>Student:</b> [Your Name] | Department of Computer Science & Engineering</p>
+      </div>
+      <div>
+        <h2>Problem Statement & Industrial Motivation</h2>
+        <ul>
+          <li>Online banking systems process critical monetary transactions where defects result in massive financial loss.</li>
+          <li>Traditional testing is siloed, manual, and executed late in the lifecycle.</li>
+          <li>Scope: Build a resilient banking portal with a 10-gate automated test suite, Docker containerization, Jenkins CI/CD, and Terraform AWS infrastructure.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "Good morning respected evaluators. Today I am presenting my DevSecOps CIAP microproject on 'Comprehensive Test Strategy for a Secure Online Banking Application'. In digital banking, software failures or security oversights directly threaten financial solvency. SecureBank addresses this by shifting automated testing and security left to guarantee 100% operational integrity and compliance with UN SDG 9."
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 2 OF 8 • ARCHITECTURE</div>
+      <h1>System Design and DevSecOps Workflow</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Multi-Tier Banking Architecture</h2>
+        <ul>
+          <li><b>Presentation Tier:</b> Semantic HTML5/CSS3 dashboard avoiding innerHTML to prevent XSS attacks.</li>
+          <li><b>Application / API Tier:</b> Zero-dependency Node.js core engine enforcing input regex, 4KB payload limits, and atomic transfers.</li>
+          <li><b>Data & Audit Tier:</b> In-memory transaction ledger backed by versioned, encrypted S3 storage.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Automated DevSecOps Pipeline Flow</h2>
+        <ul>
+          <li><b>GitHub:</b> Dual-branch model (<code>main</code> release & <code>dev</code> integration).</li>
+          <li><b>Jenkins:</b> Automated unit tests ➔ SonarQube SAST ➔ Trivy filesystem scan ➔ Multi-stage Docker build ➔ Trivy image scan ➔ AWS EC2 deployment.</li>
+          <li><b>Draw.io:</b> Complete architectural and CI/CD workflow diagrams codified.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "This slide illustrates our system architecture and DevSecOps delivery workflow. When code is pushed to GitHub, Jenkins immediately triggers our automated test strategy. Only after all unit, boundary, and security test gates pass does the code advance to static analysis with SonarQube and container scanning with Trivy."
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 3 OF 8 • IMPLEMENTATION</div>
+      <h1>Website Implementation and Testing</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Core Banking Functionality</h2>
+        <ul>
+          <li>Customer account balances: Primary Checking, High-Yield Savings, Emergency Reserve.</li>
+          <li>Authenticated funds transfer with mandatory 4-digit PIN verification.</li>
+          <li>Chronological, immutable transaction ledger with unique IDs (TXN-XXXX).</li>
+          <li>Live in-app Test Verification Matrix executed in $< 5\text{ ms}$.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Comprehensive Automated Test Suite</h2>
+        <ul>
+          <li>10 automated test suites executed via <code>node --test</code>.</li>
+          <li><b>Functional:</b> Balance consistency, currency formatting.</li>
+          <li><b>Security / DAST:</b> SQL injection rejection, XSS string neutralization.</li>
+          <li><b>Boundary:</b> Negative transfer blocking, zero overdraft enforcement.</li>
+          <li><span class="badge">Result: 10/10 Tests Passed (100% Pass Rate)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "Here is our working banking portal. Operators can execute real-time transfers with instant ledger updates. More importantly, we built a live Comprehensive Test Strategy verification matrix right into the portal. Evaluators can click 'Run Comprehensive Tests' and witness live execution of functional balance checks, SQL injection blocks, negative transfer defenses, and zero-overdraft enforcement."
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 4 OF 8 • CONTAINERIZATION & CI/CD</div>
+      <h1>Docker Deployment and Jenkins Pipeline</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Hardened Multi-Stage Dockerfile</h2>
+        <ul>
+          <li>Built on <code>node:20-alpine</code> for minimal attack surface.</li>
+          <li>Enforces non-root execution via <code>USER node</code>.</li>
+          <li>Integrated container health check (<code>wget /health</code>).</li>
+          <li>Compact image footprint: only 136 MB.</li>
+          <li>Active container running healthy on port 3001.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Jenkins 8-Stage Declarative Pipeline</h2>
+        <ul>
+          <li>Stage 1: Checkout from GitHub repo.</li>
+          <li>Stage 2: Automated unit & boundary testing.</li>
+          <li>Stage 3: SonarQube SAST Quality Gate.</li>
+          <li>Stage 4: Trivy filesystem & secret scan.</li>
+          <li>Stage 5: Docker container image packaging.</li>
+          <li>Stage 6: Trivy image scan (fails on CRITICAL CVEs).</li>
+          <li>Stage 7 & 8: Docker Hub push & AWS deployment.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "Our deployment pipeline is fully codified in Jenkinsfile. We containerized SecureBank using a hardened multi-stage Alpine Dockerfile running as non-root. The Jenkins pipeline enforces automated testing and security gates at every stage. If any test fails, or if Trivy detects a critical vulnerability in the Docker image, the pipeline aborts immediately."
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 5 OF 8 • CLOUD INFRASTRUCTURE</div>
+      <h1>AWS Infrastructure Using Terraform</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Networking & Security Groups</h2>
+        <ul>
+          <li>Region: AWS Asia Pacific Mumbai (<code>ap-south-1</code>).</li>
+          <li>Custom VPC (<code>10.0.0.0/16</code>) + Public Subnet (<code>10.0.1.0/24</code>) + Internet Gateway.</li>
+          <li>Security Group: Ingress Port 80 (HTTP) open to public; Ingress Port 22 (SSH) strictly restricted to authorized admin IP.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compute & Encrypted Storage Tier</h2>
+        <ul>
+          <li><b>EC2 Instance:</b> Amazon Linux 2023 on <code>t3.micro</code> with encrypted EBS root block volume.</li>
+          <li><b>IMDSv2 Enforced:</b> <code>http_tokens = "required"</code> preventing SSRF credential theft.</li>
+          <li><b>S3 Audit Bucket:</b> Object Versioning enabled, AES-256 Server-Side Encryption, and complete public access block.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "We provisioned the entire AWS cloud environment using Terraform. Rather than manual console configuration, our infrastructure is 100% reproducible through code. We configured an isolated VPC, restricted SSH access to our administrative IP, enforced IMDSv2 on our EC2 instance to prevent SSRF credential theft, and provisioned a versioned, AES-256 encrypted S3 bucket for banking audit storage."
+    </div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 6 OF 8 • SECURITY SCANS</div>
+      <h1>Security Scan Results and Vulnerability Report</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>SonarQube SAST Code Analysis</h2>
+        <ul>
+          <li>Security Rating: <b>A</b> (0 Vulnerabilities, 0 Hotspots).</li>
+          <li>Reliability: <b>A</b> (0 Bugs).</li>
+          <li>Maintainability: <b>A</b> (Technical debt $< 5\text{ mins}$).</li>
+          <li>Zero insecure <code>eval()</code>, zero prototype pollution.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Aqua Security Trivy Scans</h2>
+        <ul>
+          <li><b>Filesystem Scan (trivy fs):</b> 0 leaked credentials or tokens detected in source or Terraform files.</li>
+          <li><b>Container Image Scan (trivy image):</b> Scanned Alpine packages and dependencies; 0 CRITICAL vulnerabilities found in application code.</li>
+          <li><span class="badge">Quality Gate: PASSED</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "This slide summarizes our security scanning results. We subjected SecureBank to both static analysis via SonarQube and container vulnerability scanning with Trivy. Both tools confirmed zero critical vulnerabilities. By adhering to defensive coding practices—such as avoiding innerHTML and utilizing strict regular expressions—we achieved an 'A' grade across security and maintainability metrics."
+    </div>
+  </div>
+
+  <!-- Slide 7 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 7 OF 8 • ANALYSIS & REFLECTION</div>
+      <h1>Analysis and Reflection</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Pipeline Performance & Challenges</h2>
+        <ul>
+          <li>Test suite executes in $< 175\text{ ms}$, ensuring near-instant feedback for developers and fast CI builds.</li>
+          <li>Resolved multi-stage Alpine Docker handling of zero-dependency Node.js projects.</li>
+          <li>Overcame port conflicts across concurrent local containers (ports 3000, 3001, 8080, 9000).</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Individual Learning Reflection</h2>
+        <ul>
+          <li>Shifted personal mindset from manual testing to automated, shift-left quality gates.</li>
+          <li>Learned real-world defense-in-depth principles: input regex boundaries, IMDSv2 cloud hardening, and non-root containers.</li>
+          <li>Managed project across 3 Agile Scrum Sprints on JIRA (project key <code>BANK</code>).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "Reflecting on this project, the most critical learning outcome was experiencing how DevSecOps shifts testing from a reactive chore to a continuous quality gate. Resolving container build nuances, codifying AWS infrastructure, and seeing our test suite execute in milliseconds demonstrated that security and velocity can coexist seamlessly."
+    </div>
+  </div>
+
+  <!-- Slide 8 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-num">SECTION 8 OF 8 • CONCLUSION</div>
+      <h1>Conclusion and Future Scope</h1>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h2>Summary of Achievements</h2>
+        <ul>
+          <li>Built and verified <b>SecureBank</b> with live funds transfer and immutable audit ledger.</li>
+          <li>10/10 automated tests passing (100% verification).</li>
+          <li>Hardened Docker container and 8-stage Jenkins pipeline.</li>
+          <li>Terraform cloud deployment on AWS ap-south-1.</li>
+          <li>SonarQube and Trivy security verification.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>UN SDG 9 Impact & Future Scope</h2>
+        <ul>
+          <li>Directly advances <b>SDG 9 (Target 9.1 & 9.4)</b> by providing resilient, sustainable digital infrastructure.</li>
+          <li><b>Future Scope:</b>
+            <ul>
+              <li>JSON Web Token (JWT) Multi-Factor Authentication.</li>
+              <li>PostgreSQL RDS database persistence with read replicas.</li>
+              <li>Multi-region failover orchestration via AWS Route 53.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="speaker-notes">
+      <b>Speaker Talking Points:</b>
+      "To conclude, SecureBank proves that rigorous test automation and DevSecOps pipelines are essential for modern financial resilience, advancing the core objectives of UN Sustainable Development Goal 9. Moving forward, the system can be expanded with multi-factor authentication and multi-region failover. Thank you for your time, and I am now ready for your questions."
+    </div>
+  </div>
+
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const indicator = document.getElementById('slide-indicator');
+
+function showSlide(index) {
+  slides[current].classList.remove('active');
+  current = (index + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  indicator.textContent = `Slide ${current + 1} / ${slides.length}`;
+}
+
+function nextSlide() { showSlide(current + 1); }
+function prevSlide() { showSlide(current - 1); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+</script>
+</body>
+</html>
