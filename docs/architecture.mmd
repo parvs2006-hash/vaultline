@@ -1,20 +1,27 @@
 flowchart LR
-  Dev[Developer] -->|git push| GH[GitHub repo]
-  GH -->|webhook| J[Jenkins]
-  J --> T[npm test]
-  T --> S[SonarQube: SAST]
-  S --> TF[Trivy: deps, secrets, IaC]
-  TF --> B[Docker build]
-  B --> TI[Trivy: image scan - fails on CRITICAL]
-  TI --> R[Docker Hub registry]
-  R --> D[Deploy over SSH]
-  subgraph AWS [AWS ap-south-1 - provisioned by Terraform]
-    VPC[VPC + public subnet + IGW]
-    SG[Security group: 80 public, 22 admin only]
-    EC2[EC2 AL2023 + Docker: Vaultline container]
-    S3[(S3 backup bucket: versioned, encrypted, private)]
+  Dev[Developer] -->|git push| GH[GitHub: main / dev branches]
+  GH -->|webhook trigger| J[Jenkins CI/CD Automation]
+
+  subgraph CI_Pipeline [DevSecOps Automated Test Strategy & Quality Gates]
+    J --> T1[1. Automated Unit & Boundary Tests: 100% Pass]
+    T1 --> T2[2. Code Coverage Check: LCOV Report]
+    T2 --> S[3. SonarQube SAST: Zero Vulnerabilities Gate]
+    S --> TF[4. Trivy Filesystem: Secret & Misconfig Scan]
+    TF --> B[5. Multi-Stage Docker Image Build]
+    B --> TI[6. Trivy Image Scan: Fail on CRITICAL CVEs]
+  end
+
+  TI --> R[Docker Hub Container Registry]
+  R --> D[Automated SSH Deployment]
+
+  subgraph AWS_Cloud [AWS ap-south-1 Cloud Infrastructure via Terraform]
+    VPC[VPC 10.0.0.0/16 + Public Subnet]
+    SG[Security Group: Port 80 Web, Port 22 Admin Only]
+    EC2[EC2 Instance - Amazon Linux 2023 + Docker]
+    S3[(Encrypted & Versioned S3 Banking Audit Ledger)]
     VPC --- SG --- EC2
   end
+
   D --> EC2
-  User[End user browser] -->|HTTP 80| EC2
-  JIRA[JIRA board] -.tracks.- GH
+  User[Banking Customer Browser] -->|HTTPS / Port 80| EC2
+  JIRA[JIRA Scrum Board: BANK] -.Tracks.- GH

@@ -1,12 +1,14 @@
 {
-  "name": "vaultline",
-  "version": "1.0.1",
-  "description": "Cloud-based Disaster Recovery & Backup System (DevSecOps CIAP micro project, SDG 9)",
+  "name": "securebank",
+  "version": "1.0.0",
+  "description": "Comprehensive Test Strategy for a Secure Online Banking Application (DevSecOps CIAP Microproject, SDG 9)",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "test": "node --test --experimental-test-coverage test/*.test.js"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "license": "MIT"
 }

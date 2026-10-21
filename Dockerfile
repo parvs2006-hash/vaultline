@@ -2,7 +2,7 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --omit=dev --no-audit --no-fund
+RUN mkdir -p /app/node_modules && npm install --omit=dev --no-audit --no-fund
 
 # Stage 2: minimal runtime, non-root user
 FROM node:20-alpine

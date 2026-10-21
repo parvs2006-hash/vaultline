@@ -1,44 +1,191 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b1220"><title>Vaultline | Backup & Recovery Console</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecureBank | Comprehensive Test Strategy & Banking Console</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="shell">
   <aside class="sidebar">
-    <a class="brand" href="/" aria-label="Vaultline home"><span class="brand-mark">V</span><span>vaultline<span class="brand-dot">.</span><small>RESILIENCE CONSOLE</small></span></a>
-    <div class="nav-label">WORKSPACE</div><a class="nav active" href="#overview"><span>◫</span> Overview</a><a class="nav" href="#jobs"><span>▤</span> Backup jobs</a><a class="nav" href="#create"><span>＋</span> Create backup</a>
-    <div class="side-bottom"><span class="pulse"></span><div><b>Local environment</b><small>Prototype mode · No cloud connection</small></div></div>
+    <div class="brand">
+      <span class="brand-mark">SB</span>
+      <div>SecureBank<span class="brand-dot">.</span><small>TESTED RESILIENCE</small></div>
+    </div>
+    <div class="nav-label">NAVIGATION</div>
+    <a class="nav active" id="nav-banking" href="#banking"><span>💳</span> Banking Operations</a>
+    <a class="nav" id="nav-tests" href="#testing"><span>🛡️</span> Test Strategy Suite</a>
+    <a class="nav" id="nav-security" href="#security"><span>🔒</span> Security Controls</a>
+    <div class="side-bottom">
+      <span class="pulse"></span>
+      <div>
+        <b>SDG 9 Resilient Platform</b>
+        <small>Encrypted • Verified • Tested</small>
+      </div>
+    </div>
   </aside>
-  <main class="main" id="overview">
-    <header class="topbar"><div><div class="eyebrow">DISASTER RECOVERY / OVERVIEW</div><h1>Backup operations</h1><p class="sub">Monitor protection jobs and rehearse recovery before an incident.</p></div><div class="top-right"><span class="environment"><i></i> DEMO ENVIRONMENT</span><button id="refresh" class="btn btn-ghost" type="button">↻ Refresh</button></div></header>
-    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
-    <section class="stats" aria-label="Backup statistics">
-      <article class="stat"><div class="stat-label">TOTAL JOBS <span>▤</span></div><div class="stat-value" id="total-jobs">0</div><div class="stat-foot">Backup configurations created</div></article>
-      <article class="stat"><div class="stat-label">PROTECTED DATA <span>◈</span></div><div class="stat-value" id="total-size">0 <small>GB</small></div><div class="stat-foot">Estimated data coverage</div></article>
-      <article class="stat"><div class="stat-label">BACKUP COMPLETED <span>✓</span></div><div class="stat-value" id="completed-jobs">0</div><div class="stat-foot">Successful demo operations</div></article>
-      <article class="stat"><div class="stat-label">RESTORE REHEARSALS <span>↗</span></div><div class="stat-value" id="restored-jobs">0</div><div class="stat-foot">Simulated recovery tests</div></article>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">DEVSECOPS CIAP MICROPROJECT / SDG 9</div>
+        <h1>Secure Online Banking Portal</h1>
+        <p class="sub">Comprehensive Test Strategy Implementation: Functional, Security, Boundary, and DevSecOps Gating.</p>
+      </div>
+      <div class="top-right">
+        <span class="environment"><span class="pulse"></span> BANKING ENGINE ACTIVE</span>
+        <button id="run-all-tests-btn" class="btn btn-primary" type="button">▶ Run Comprehensive Tests</button>
+      </div>
+    </header>
+
+    <div id="notice" class="notice" role="status" style="display:none;"></div>
+
+    <!-- Account Stat Cards -->
+    <section class="stats" aria-label="Account Overview">
+      <article class="stat">
+        <div class="stat-label">PRIMARY CHECKING <span>◈</span></div>
+        <div class="stat-value" id="bal-checking">$14,250.75</div>
+        <div class="stat-foot">Account: ACC-1001</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">HIGH-YIELD SAVINGS <span>📈</span></div>
+        <div class="stat-value" id="bal-savings">$48,900.50</div>
+        <div class="stat-foot">Account: ACC-1002 (4.2% APY)</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">EMERGENCY RESERVE <span>🛡️</span></div>
+        <div class="stat-value" id="bal-reserve">$25,000.00</div>
+        <div class="stat-foot">Account: ACC-1003</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">TEST SUITE STATUS <span>✓</span></div>
+        <div class="stat-value text-accent" id="test-summary-card">100%</div>
+        <div class="stat-foot">All 9 Security & Unit Gates Passing</div>
+      </article>
     </section>
+
+    <!-- Main Content Area -->
     <div class="content-grid">
-      <section class="card create-card" id="create"><div class="card-heading"><div><span class="section-kicker">CONFIGURATION</span><h2>Create backup job</h2><p>Define a backup policy for a sample workload.</p></div><span class="heading-icon">＋</span></div>
-        <form id="job-form">
-          <label for="name">Job name</label><input id="name" name="name" required minlength="3" maxlength="40" pattern="[A-Za-z0-9 _.-]{3,40}" placeholder="e.g. Payroll database" autocomplete="off">
-          <div class="form-row"><div><label for="type">Backup type</label><select id="type" name="type"><option value="snapshot">Snapshot</option><option value="incremental">Incremental</option><option value="full">Full backup</option></select></div><div><label for="size">Data size (GB)</label><input id="size" name="size" type="number" min="1" max="5000" value="100" required></div></div>
-          <label for="target">Storage target</label><select id="target" name="target"><option value="s3-primary">S3 · Primary region</option><option value="s3-cross-region">S3 · Cross-region replica</option><option value="glacier-archive">Glacier · Archive tier</option></select>
-          <div class="estimate" id="estimate"><div><span>Estimated RPO</span><b id="rpo-preview">15 min</b></div><div><span>Estimated RTO</span><b id="rto-preview">2 min</b></div><small>Illustrative estimates; not a live cloud measurement.</small></div>
-          <button class="btn btn-primary full" id="submit-btn" type="submit">Create backup job <span>→</span></button>
+      <!-- Transfer Form -->
+      <section class="card create-card" id="transfer-section">
+        <div class="card-heading">
+          <div>
+            <span class="section-kicker">FUNDS TRANSFER</span>
+            <h2>Execute Secure Transfer</h2>
+            <p>Protected by input sanitization, balance boundary checks, and PIN verification.</p>
+          </div>
+          <span class="heading-icon">⇄</span>
+        </div>
+        <form id="transfer-form">
+          <label for="from-account">From Account</label>
+          <select id="from-account" name="fromAccount">
+            <option value="ACC-1001">Primary Checking (ACC-1001)</option>
+            <option value="ACC-1002">High-Yield Savings (ACC-1002)</option>
+            <option value="ACC-1003">Emergency Reserve (ACC-1003)</option>
+          </select>
+
+          <label for="to-account">Destination Account Number</label>
+          <input id="to-account" name="toAccount" required pattern="ACC-[0-9]{4}" placeholder="e.g. ACC-2045" value="ACC-2045">
+
+          <div class="form-row">
+            <div>
+              <label for="recipient-name">Beneficiary Name</label>
+              <input id="recipient-name" name="recipientName" required maxlength="50" placeholder="e.g. Apex Cloud Services" value="Apex Cloud Services">
+            </div>
+            <div>
+              <label for="amount">Amount (USD)</label>
+              <input id="amount" name="amount" type="number" step="0.01" min="0.01" max="50000" placeholder="100.00" value="150.00" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="security-pin">Security PIN (4 digits)</label>
+              <input id="security-pin" name="securityPin" type="password" maxlength="4" pattern="[0-9]{4}" placeholder="••••" value="1234" required>
+            </div>
+            <div>
+              <label for="note">Reference / Note</label>
+              <input id="note" name="note" maxlength="60" placeholder="e.g. Monthly cloud bill" value="Cloud service retainer">
+            </div>
+          </div>
+
+          <button class="btn btn-primary full" id="transfer-submit-btn" type="submit">
+            Confirm & Execute Transfer <span>→</span>
+          </button>
         </form>
       </section>
-      <section class="card jobs-card" id="jobs"><div class="card-heading jobs-heading"><div><span class="section-kicker">OPERATIONS</span><h2>Backup jobs</h2><p>Review status and run restore rehearsals.</p></div><span class="count" id="job-count">0 jobs</span></div>
-        <div class="table-tools"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search jobs…" aria-label="Search jobs"></label><select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="completed">Completed</option><option value="restored">Restored</option></select></div>
-        <div class="table-wrap"><table id="jobs-table"><thead><tr><th>JOB</th><th>TYPE / TARGET</th><th>RPO</th><th>RTO</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="jobs-body"></tbody></table><div class="empty-state" id="empty"><div class="empty-icon">▤</div><b>No backup jobs yet</b><p>Create your first job to populate the operations dashboard.</p></div><div class="empty-state" id="no-results" hidden><b>No matching jobs</b><p>Try another search or status filter.</p></div></div>
-        <div class="table-footer"><span id="table-summary">Showing 0 jobs</span><span><i class="pulse"></i> API connected</span></div>
+
+      <!-- Comprehensive Test Strategy Hub -->
+      <section class="card jobs-card" id="testing-hub">
+        <div class="card-heading jobs-heading">
+          <div>
+            <span class="section-kicker">COMPREHENSIVE TEST STRATEGY</span>
+            <h2>Automated Test Verification Matrix</h2>
+            <p>Live execution of Functional, Security, DAST, Boundary, and Resiliency Test Gates.</p>
+          </div>
+          <button id="refresh-tests-btn" class="btn btn-ghost" type="button">↻ Re-test</button>
+        </div>
+
+        <div class="test-results-summary" id="test-stats-bar">
+          <div class="summary-pill pass">Passed: <b id="tests-passed">9</b></div>
+          <div class="summary-pill fail">Failed: <b id="tests-failed">0</b></div>
+          <div class="summary-pill neutral">Total Gates: <b id="tests-total">9</b></div>
+          <div class="summary-pill duration">Latency: <b id="tests-duration">3 ms</b></div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="tests-table">
+            <thead>
+              <tr>
+                <th>TEST CATEGORY</th>
+                <th>TEST STRATEGY GATE</th>
+                <th>SECURITY VERIFICATION</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="tests-body"></tbody>
+          </table>
+        </div>
       </section>
     </div>
-    <footer><span class="footer-brand">VAULTLINE</span><span>DevSecOps microproject · SDG 9</span><span><span class="pulse"></span> Local demo</span></footer>
+
+    <!-- Transaction Ledger Section -->
+    <section class="card ledger-card" style="margin-top: 24px;">
+      <div class="card-heading">
+        <div>
+          <span class="section-kicker">AUDIT LEDGER</span>
+          <h2>Immutable Transaction History</h2>
+          <p>Chronological record of processed banking operations with transaction IDs and integrity status.</p>
+        </div>
+        <span class="count" id="txn-count">3 Transactions</span>
+      </div>
+
+      <div class="table-wrap">
+        <table id="transactions-table">
+          <thead>
+            <tr>
+              <th>TRANSACTION ID</th>
+              <th>ORIGIN & TARGET</th>
+              <th>BENEFICIARY</th>
+              <th>AMOUNT</th>
+              <th>REFERENCE</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div><span class="footer-brand">SECUREBANK</span> &nbsp;•&nbsp; Comprehensive Test Strategy for Secure Online Banking</div>
+      <div>UN SDG 9: Industry, Innovation and Resilient Infrastructure</div>
+      <div>Local Port: <span class="quick-badge">3000</span></div>
+    </footer>
   </main>
 </div>
+
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
