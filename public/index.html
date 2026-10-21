@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220"><title>Vaultline | Backup & Recovery Console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Vaultline home"><span class="brand-mark">V</span><span>vaultline<span class="brand-dot">.</span><small>RESILIENCE CONSOLE</small></span></a>
+    <div class="nav-label">WORKSPACE</div><a class="nav active" href="#overview"><span>◫</span> Overview</a><a class="nav" href="#jobs"><span>▤</span> Backup jobs</a><a class="nav" href="#create"><span>＋</span> Create backup</a>
+    <div class="side-bottom"><span class="pulse"></span><div><b>Local environment</b><small>Prototype mode · No cloud connection</small></div></div>
+  </aside>
+  <main class="main" id="overview">
+    <header class="topbar"><div><div class="eyebrow">DISASTER RECOVERY / OVERVIEW</div><h1>Backup operations</h1><p class="sub">Monitor protection jobs and rehearse recovery before an incident.</p></div><div class="top-right"><span class="environment"><i></i> DEMO ENVIRONMENT</span><button id="refresh" class="btn btn-ghost" type="button">↻ Refresh</button></div></header>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="stats" aria-label="Backup statistics">
+      <article class="stat"><div class="stat-label">TOTAL JOBS <span>▤</span></div><div class="stat-value" id="total-jobs">0</div><div class="stat-foot">Backup configurations created</div></article>
+      <article class="stat"><div class="stat-label">PROTECTED DATA <span>◈</span></div><div class="stat-value" id="total-size">0 <small>GB</small></div><div class="stat-foot">Estimated data coverage</div></article>
+      <article class="stat"><div class="stat-label">BACKUP COMPLETED <span>✓</span></div><div class="stat-value" id="completed-jobs">0</div><div class="stat-foot">Successful demo operations</div></article>
+      <article class="stat"><div class="stat-label">RESTORE REHEARSALS <span>↗</span></div><div class="stat-value" id="restored-jobs">0</div><div class="stat-foot">Simulated recovery tests</div></article>
+    </section>
+    <div class="content-grid">
+      <section class="card create-card" id="create"><div class="card-heading"><div><span class="section-kicker">CONFIGURATION</span><h2>Create backup job</h2><p>Define a backup policy for a sample workload.</p></div><span class="heading-icon">＋</span></div>
+        <form id="job-form">
+          <label for="name">Job name</label><input id="name" name="name" required minlength="3" maxlength="40" pattern="[A-Za-z0-9 _.-]{3,40}" placeholder="e.g. Payroll database" autocomplete="off">
+          <div class="form-row"><div><label for="type">Backup type</label><select id="type" name="type"><option value="snapshot">Snapshot</option><option value="incremental">Incremental</option><option value="full">Full backup</option></select></div><div><label for="size">Data size (GB)</label><input id="size" name="size" type="number" min="1" max="5000" value="100" required></div></div>
+          <label for="target">Storage target</label><select id="target" name="target"><option value="s3-primary">S3 · Primary region</option><option value="s3-cross-region">S3 · Cross-region replica</option><option value="glacier-archive">Glacier · Archive tier</option></select>
+          <div class="estimate" id="estimate"><div><span>Estimated RPO</span><b id="rpo-preview">15 min</b></div><div><span>Estimated RTO</span><b id="rto-preview">2 min</b></div><small>Illustrative estimates; not a live cloud measurement.</small></div>
+          <button class="btn btn-primary full" id="submit-btn" type="submit">Create backup job <span>→</span></button>
+        </form>
+      </section>
+      <section class="card jobs-card" id="jobs"><div class="card-heading jobs-heading"><div><span class="section-kicker">OPERATIONS</span><h2>Backup jobs</h2><p>Review status and run restore rehearsals.</p></div><span class="count" id="job-count">0 jobs</span></div>
+        <div class="table-tools"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search jobs…" aria-label="Search jobs"></label><select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="completed">Completed</option><option value="restored">Restored</option></select></div>
+        <div class="table-wrap"><table id="jobs-table"><thead><tr><th>JOB</th><th>TYPE / TARGET</th><th>RPO</th><th>RTO</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="jobs-body"></tbody></table><div class="empty-state" id="empty"><div class="empty-icon">▤</div><b>No backup jobs yet</b><p>Create your first job to populate the operations dashboard.</p></div><div class="empty-state" id="no-results" hidden><b>No matching jobs</b><p>Try another search or status filter.</p></div></div>
+        <div class="table-footer"><span id="table-summary">Showing 0 jobs</span><span><i class="pulse"></i> API connected</span></div>
+      </section>
+    </div>
+    <footer><span class="footer-brand">VAULTLINE</span><span>DevSecOps microproject · SDG 9</span><span><span class="pulse"></span> Local demo</span></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>
