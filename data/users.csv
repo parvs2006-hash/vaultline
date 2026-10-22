@@ -1,0 +1,2 @@
+id,username,password,role,fullName,email,mustChangePassword,failedAttempts,lockoutUntil
+35114f1c-c110-4cea-9dc7-de4ef6c3fe23,shreya.pawar25@sakec.ac.in,$2a$10$SHo8o1qI85NOPue9BTaoceq71hANrknQMyF9KG18DG1eOqUjPUbQO,TEACHER,shreya pawar,shreya.pawar25@sakec.ac.in,false,0,0

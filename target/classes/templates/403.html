@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 Access Denied | EduTrack</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <main class="main-content" style="display:flex; align-items:center; justify-content:center; min-height:65vh;">
+        <div class="card" style="max-width: 520px; text-align: center; padding: 2.5rem; border-top: 4px solid var(--danger);">
+            <div style="font-size: 3.5rem; margin-bottom: 1rem;">🚫</div>
+            <h1 style="font-size: 1.75rem; color: var(--danger); margin-bottom: 0.5rem;">403 - Access Denied</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+                You do not have permission to access the requested resource:
+            </p>
+            <div th:if="${deniedUri}" style="background:var(--bg-subtle); padding:8px 12px; border-radius:var(--radius-sm); font-family:monospace; font-size:0.85rem; margin-bottom:1.5rem; word-break:break-all;" th:text="${deniedUri}">
+                /teacher/dashboard
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                Students are strictly restricted from viewing administrative, grading, and teacher portal routes. 
+                Please return to your student dashboard.
+            </p>
+
+            <div style="display:flex; justify-content:center; gap:1rem;">
+                <a th:href="@{/}" class="btn btn-primary">Return to My Dashboard</a>
+                <a th:href="@{/login}" class="btn btn-outline">Switch Account</a>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/navbar :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

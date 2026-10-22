@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+<body>
+    <!-- Navbar Fragment -->
+    <header th:fragment="navbar" class="navbar">
+        <div class="nav-container">
+            <a th:href="@{/}" class="nav-brand">
+                <div class="nav-brand-logo">🎓</div>
+                <div>
+                    <div class="nav-brand-title">EduTrack</div>
+                    <div class="nav-brand-subtitle">Attendance &amp; Performance</div>
+                </div>
+            </a>
+
+            <!-- Nav Links based on Role -->
+            <ul class="nav-menu">
+                <!-- TEACHER MENU -->
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/dashboard}" class="nav-link">📊 Dashboard</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/students}" class="nav-link">👥 Students</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/attendance}" class="nav-link">📅 Attendance</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/marks}" class="nav-link">📝 Marks</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/at-risk}" class="nav-link">⚠️ At-Risk</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/leaderboard}" class="nav-link">🏆 Leaderboard</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/reports}" class="nav-link">📑 Reports</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/subjects}" class="nav-link">📚 Subjects</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/settings}" class="nav-link">⚙️ Settings</a></li>
+                <li sec:authorize="hasRole('TEACHER')"><a th:href="@{/teacher/manage-teachers}" class="nav-link">👨‍🏫 Teachers</a></li>
+
+                <!-- STUDENT MENU -->
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/dashboard}" class="nav-link">🏠 My Dashboard</a></li>
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/marks}" class="nav-link">📊 My Marks</a></li>
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/attendance}" class="nav-link">📅 My Attendance</a></li>
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/suggestions}" class="nav-link">💡 Suggestions</a></li>
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/report-card}" class="nav-link">📜 Report Card</a></li>
+                <li sec:authorize="hasRole('STUDENT')"><a th:href="@{/student/change-password}" class="nav-link">🔑 Password</a></li>
+
+                <!-- PUBLIC LINKS -->
+                <li><a th:href="@{/sdg4}" class="nav-link">🌍 SDG 4</a></li>
+                <li><a th:href="@{/about}" class="nav-link">ℹ️ About</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <!-- Theme Toggle Button -->
+                <button type="button" id="theme-toggle-btn" class="theme-toggle" title="Toggle Dark/Light Mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+
+                <!-- Authenticated User Profile Badge & Logout -->
+                <div sec:authorize="isAuthenticated()" class="user-badge">
+                    <span sec:authentication="name" style="font-weight:600;">User</span>
+                    <span sec:authorize="hasRole('TEACHER')" class="role-pill role-pill-teacher">Teacher</span>
+                    <span sec:authorize="hasRole('STUDENT')" class="role-pill role-pill-student">Student</span>
+                    <form th:action="@{/logout}" method="post" style="display:inline; margin-left: 4px;">
+                        <button type="submit" class="btn btn-outline btn-sm" style="padding: 2px 8px; font-size: 0.75rem;">Logout</button>
+                    </form>
+                </div>
+
+                <!-- Unauthenticated Login Button -->
+                <div sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}" class="btn btn-primary btn-sm">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Footer Fragment -->
+    <footer th:fragment="footer" class="footer">
+        <div>
+            Java Fundamentals Microproject &nbsp;|&nbsp; 
+            <strong>Shah &amp; Anchor Kutchhi Engineering College</strong> &nbsp;|&nbsp; 
+            <span class="footer-highlight">UN SDG 4: Quality Education</span>
+        </div>
+    </footer>
+</body>
+</html>

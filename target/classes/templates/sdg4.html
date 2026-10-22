@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UN SDG 4: Quality Education | EduTrack</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <main class="main-content">
+        <!-- Hero Header -->
+        <div style="background: linear-gradient(135deg, #c5192d 0%, #b01525 100%); color:#fff; border-radius:var(--radius-lg); padding: 2.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-md);">
+            <div style="max-width: 800px;">
+                <div style="display:inline-block; background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:9999px; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.75rem;">
+                    United Nations Sustainable Development Goal 4
+                </div>
+                <h1 style="color:#fff; font-size: 2.25rem; font-weight:800; line-height:1.2; margin-bottom:0.75rem;">
+                    Ensure Inclusive and Equitable Quality Education
+                </h1>
+                <p style="font-size: 1.05rem; opacity:0.95; line-height:1.6;">
+                    EduTrack supports Target 4.1 &amp; 4.5 by providing higher education faculty with automated early-warning analytics to identify vulnerable and struggling students before they fall behind or drop out.
+                </p>
+            </div>
+        </div>
+
+        <!-- Live Metrics Section -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">📊 Live Institutional SDG 4 Indicators</h2>
+                    <p style="color:var(--text-muted); font-size:0.85rem;">
+                        Real-time indicators calculated from active student records in the system.
+                    </p>
+                </div>
+                <span class="badge" style="background:#dcfce7; color:#16a34a; font-size:0.8rem;">● Live Telemetry</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue">👥</div>
+                    <div>
+                        <div class="stat-value" th:text="${summary.totalStudents}">0</div>
+                        <div class="stat-label">Total Students Monitored</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-teal">📅</div>
+                    <div>
+                        <div class="stat-value" th:text="${summary.totalStudents > 0 ? #numbers.formatDecimal(summary.averageAttendance, 1, 1) + '%' : 'N/A'}">0%</div>
+                        <div class="stat-label">Average Institutional Attendance</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber">⚠️</div>
+                    <div>
+                        <div class="stat-value" th:text="${summary.needsAttentionCount}">0</div>
+                        <div class="stat-label">Needs Attention (Early Signal)</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-red">🚨</div>
+                    <div>
+                        <div class="stat-value" th:text="${summary.atRiskCount}">0</div>
+                        <div class="stat-label">At-Risk (Immediate Help Needed)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${summary.totalStudents == 0}" class="empty-state" style="margin: 0.5rem 0 0 0;">
+                <div class="empty-state-icon">🌱</div>
+                <h3 class="empty-state-title">Empty Roster State</h3>
+                <p class="empty-state-desc">
+                    No student records exist yet in this fresh deployment. Once faculty members enroll students and record attendance and marks, live early-intervention metrics will populate above.
+                </p>
+            </div>
+        </div>
+
+        <!-- How EduTrack Drives Quality Education -->
+        <div class="card">
+            <h2 class="card-title" style="margin-bottom: 1.25rem;">🛠️ How EduTrack Implements SDG 4 Principles</h2>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <div style="border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; background:var(--bg-subtle);">
+                    <div style="font-size:2rem; margin-bottom:0.5rem;">🔍</div>
+                    <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--primary);">1. Early Warning &amp; Retention</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">
+                        Low attendance and failing marks are primary leading indicators of student disengagement. EduTrack flags students the moment their attendance dips below 75% or scores fall below 40%, preventing dropouts before exam week.
+                    </p>
+                </div>
+
+                <div style="border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; background:var(--bg-subtle);">
+                    <div style="font-size:2rem; margin-bottom:0.5rem;">📈</div>
+                    <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--secondary);">2. Data-Driven Pedagogy</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">
+                        Teachers receive instant subject-wise average analytics. If a class exhibits consistently low performance in Java or Mathematics, faculty can organize timely remedial classes and adjust teaching strategies.
+                    </p>
+                </div>
+
+                <div style="border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; background:var(--bg-subtle);">
+                    <div style="font-size:2rem; margin-bottom:0.5rem;">🎯</div>
+                    <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--warning);">3. Transparent Student Mentoring</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">
+                        Students obtain transparent, rule-based academic feedback and actionable suggestions directly within their personal portal, eliminating anxiety and encouraging proactive communication with faculty advisors.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/navbar :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EduTrack | Java Fundamentals Microproject</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-header-title">ℹ️ About EduTrack</h1>
+                <p class="page-header-subtitle">
+                    College Microproject for Java Fundamentals (Module 1 / CO1) &bull; Shah &amp; Anchor Kutchhi Engineering College
+                </p>
+            </div>
+            <div class="header-actions">
+                <a th:href="@{/sdg4}" class="btn btn-secondary">🌍 Explore UN SDG 4 Impact</a>
+            </div>
+        </div>
+
+        <!-- Project Objectives Card -->
+        <div class="card">
+            <h2 class="card-title" style="margin-bottom: 0.75rem;">🎯 Project Objectives</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                <strong>EduTrack</strong> is designed to address early academic attrition and attendance irregularity in higher education institutions. By integrating daily attendance tracking with multi-subject marks analysis, EduTrack provides faculty members with a real-time early warning system to support <strong>United Nations Sustainable Development Goal 4: Quality Education</strong>.
+            </p>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="background:var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border-left: 4px solid var(--primary);">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.25rem;">Early Risk Detection</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Dynamically classifies students as At Risk or Needing Attention based on customizable attendance and score thresholds.</p>
+                </div>
+                <div style="background:var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border-left: 4px solid var(--secondary);">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.25rem;">Strict Role Governance</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Enforces complete server-side security isolating student data and preventing grade tampering via Spring Security 6.</p>
+                </div>
+                <div style="background:var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border-left: 4px solid var(--warning);">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 0.25rem;">Zero Database Dependency</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Built using core Java memory collections (java.util.Vector) and robust CSV file persistence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Card -->
+        <div class="card">
+            <h2 class="card-title" style="margin-bottom: 0.75rem;">💻 Technology Stack</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:0.5rem;">
+                <span class="badge" style="background:#dbeafe; color:#1e40af; padding:6px 14px; font-size:0.85rem;">Java 17 (LTS)</span>
+                <span class="badge" style="background:#ccfbf1; color:#0f766e; padding:6px 14px; font-size:0.85rem;">Spring Boot 3.2.5</span>
+                <span class="badge" style="background:#e0e7ff; color:#3730a3; padding:6px 14px; font-size:0.85rem;">Spring Security 6 (BCrypt)</span>
+                <span class="badge" style="background:#fef3c7; color:#92400e; padding:6px 14px; font-size:0.85rem;">Thymeleaf Template Engine</span>
+                <span class="badge" style="background:#fee2e2; color:#991b1b; padding:6px 14px; font-size:0.85rem;">Chart.js 4.4</span>
+                <span class="badge" style="background:#f3e8ff; color:#6b21a8; padding:6px 14px; font-size:0.85rem;">HTML5, CSS3 &amp; Vanilla JavaScript</span>
+                <span class="badge" style="background:#f1f5f9; color:#475569; padding:6px 14px; font-size:0.85rem;">Apache Maven 3.9</span>
+            </div>
+        </div>
+
+        <!-- Java Concepts to File Mapping Table -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">📚 Java Fundamentals Syllabus Mapping (Module 1 / CO1)</h2>
+                    <p style="color:var(--text-muted); font-size:0.85rem; margin-top:2px;">
+                        Each concept from the academic syllabus is tagged in the source code with <code>// Demonstrates: &lt;concept&gt;</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Syllabus Requirement</th>
+                            <th>Implementation File</th>
+                            <th>Code Demonstration Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Abstract Class</strong></td>
+                            <td><code>com.edutrack.model.Person.java</code></td>
+                            <td>Abstract base class holding common fields (<code>id</code>, <code>name</code>, <code>email</code>) and abstract method <code>getRole()</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Inheritance</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code><br><code>com.edutrack.model.Teacher.java</code></td>
+                            <td><code>Student extends Person</code> and <code>Teacher extends Person</code> inheriting common attributes and behavior.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Encapsulation</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code></td>
+                            <td>Private attributes with public validated getters and setters (enforcing marks boundaries 0 to 100).</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Constructor Overloading</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code></td>
+                            <td>Four overloaded constructors: default, basic identity, full identity, and complete array initialization.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Method Overloading</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code></td>
+                            <td><code>calculateAverage()</code> (overall array average) and <code>calculateAverage(String subjectKey)</code> (subject-specific average).</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Polymorphism</strong></td>
+                            <td><code>Student.java</code>, <code>Teacher.java</code></td>
+                            <td>Dynamic method dispatch overriding abstract <code>getRole()</code> and <code>toString()</code> methods from <code>Person</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Static Members</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code></td>
+                            <td>Static member <code>studentCounter</code> tracking total instances and static utility method <code>calculateGrade(double)</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><strong>Interface</strong></td>
+                            <td><code>com.edutrack.model.Reportable.java</code></td>
+                            <td>Interface defining <code>generateReport()</code> implemented by both <code>Student.java</code> and <code>ClassSummary.java</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><strong>Arrays</strong></td>
+                            <td><code>com.edutrack.model.Student.java</code></td>
+                            <td>Subject marks stored in fixed-dimension integer array <code>private int[] marks;</code> with defensive cloning.</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><strong>Vector Collection</strong></td>
+                            <td><code>com.edutrack.service.DataStorageService.java</code></td>
+                            <td>Thread-safe memory storage using <code>java.util.Vector&lt;Student&gt;</code>, <code>Vector&lt;User&gt;</code>, <code>Vector&lt;Subject&gt;</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><strong>Strings and StringBuffer</strong></td>
+                            <td><code>Student.java</code>, <code>ClassSummary.java</code>, <code>DataStorageService.java</code></td>
+                            <td><code>StringBuffer</code> used for building multi-line reports and CSV serialization; String methods (<code>toLowerCase</code>, <code>contains</code>, <code>trim</code>, <code>split</code>) in search and parsing.</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td><strong>Control Structures</strong></td>
+                            <td><code>Student.java</code>, <code>StudentService.java</code>, <code>ConsoleApp.java</code></td>
+                            <td><code>switch</code> for grade calculation and console menu; <code>if-else</code> for early warning status; <code>for</code>/<code>while</code>/enhanced-for loops.</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td><strong>Custom Exceptions</strong></td>
+                            <td><code>com.edutrack.util.InvalidMarksException</code><br><code>com.edutrack.util.DuplicateRollNumberException</code></td>
+                            <td>Custom checked exceptions thrown on boundary violations and surfaced to the UI as polite error alerts.</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td><strong>Console App &amp; Scanner</strong></td>
+                            <td><code>com.edutrack.console.ConsoleApp.java</code></td>
+                            <td>Standalone text menu terminal interface using <code>Scanner</code> and <code>System.in</code> running against identical services.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Project Team Members Card -->
+        <div class="card">
+            <h2 class="card-title" style="margin-bottom: 1rem;">👥 Development Team</h2>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+                <!-- Team Member 1 -->
+                <div style="background:var(--bg-subtle); padding:1.25rem; border-radius:var(--radius-md); border: 1px solid var(--border-color); text-align:center;">
+                    <div style="width:54px; height:54px; border-radius:50%; background:#dbeafe; color:#1e40af; font-size:1.5rem; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem auto;">👨‍💻</div>
+                    <h3 style="font-size:1.05rem;">Student 1 (Team Lead)</h3>
+                    <p style="font-size:0.8rem; color:var(--secondary); font-weight:600; margin-bottom:0.5rem;">Architecture &amp; Core Services</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Roll No: 2024CS01 &bull; Class: TE COMP A<br>Shah &amp; Anchor Kutchhi Engineering College</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div style="background:var(--bg-subtle); padding:1.25rem; border-radius:var(--radius-md); border: 1px solid var(--border-color); text-align:center;">
+                    <div style="width:54px; height:54px; border-radius:50%; background:#ccfbf1; color:#0f766e; font-size:1.5rem; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem auto;">👩‍💻</div>
+                    <h3 style="font-size:1.05rem;">Student 2 (Backend &amp; Security)</h3>
+                    <p style="font-size:0.8rem; color:var(--secondary); font-weight:600; margin-bottom:0.5rem;">Spring Security &amp; Data Models</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Roll No: 2024CS02 &bull; Class: TE COMP A<br>Shah &amp; Anchor Kutchhi Engineering College</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div style="background:var(--bg-subtle); padding:1.25rem; border-radius:var(--radius-md); border: 1px solid var(--border-color); text-align:center;">
+                    <div style="width:54px; height:54px; border-radius:50%; background:#fef3c7; color:#d97706; font-size:1.5rem; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem auto;">👨‍💻</div>
+                    <h3 style="font-size:1.05rem;">Student 3 (UI &amp; Analytics)</h3>
+                    <p style="font-size:0.8rem; color:var(--secondary); font-weight:600; margin-bottom:0.5rem;">Thymeleaf, Chart.js &amp; Reports</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Roll No: 2024CS03 &bull; Class: TE COMP A<br>Shah &amp; Anchor Kutchhi Engineering College</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/navbar :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

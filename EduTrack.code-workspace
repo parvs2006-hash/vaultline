@@ -1,0 +1,44 @@
+{
+    // VS Code workspace for the EduTrack Spring Boot app
+    "folders": [
+        {
+            // Project root – contains pom.xml, src/, etc.
+            "path": "."
+        }
+    ],
+    "settings": {
+        // Java 17 (or newer) SDK – adjust if your JDK is installed elsewhere
+        "java.configuration.runtimes": [
+            {
+                "name": "JavaSE-17",
+                "path": "C:/Program Files/Java/jdk-17",
+                "default": true
+            }
+        ],
+        // Maven integration
+        "java.import.maven.enabled": true,
+        "java.import.gradle.enabled": false,
+        // Enable automatic project build on file save
+        "java.autobuild.enabled": true,
+        // Show generated sources (e.g., Lombok, if used later)
+        "java.project.sourcePaths": [
+            "src/main/java",
+            "src/main/resources"
+        ],
+        // Formatting preferences – you can tweak as you like
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        // Terminal defaults to PowerShell (as you use it)
+        "terminal.integrated.defaultProfile.windows": "PowerShell"
+    },
+    // Optional extensions recommendation for this project
+    "extensions": {
+        "recommendations": [
+            "vscjava.vscode-java-pack",
+            "vscjava.vscode-maven",
+            "vscjava.vscode-spring-boot",
+            "ms-azuretools.vscode-docker"
+        ]
+    }
+}
